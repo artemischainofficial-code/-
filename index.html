@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ARTEMIS QUEST - Code 01</title>
+    <style>
+        body { background: #0a0a0a; color: #d4af37; font-family: 'serif'; text-align: center; }
+        .status-box { border: 1px solid #d4af37; padding: 20px; margin: 20px; border-radius: 10px; }
+        button { background: #d4af37; color: black; border: none; padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>ARTEMIS QUEST</h1>
+    <div class="status-box">
+        <p>現在のランク: <span id="rank">1 (見習い)</span></p>
+        <p>所持コイン: <span id="coins">0</span> 枚</p>
+    </div>
+    <div id="quest-area">
+        <button onclick="checkLocation()">周辺のクエストをスキャン</button>
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        // ここにマスターのロジック（GPS取得、歩数カウント、ランク管理）を記述していきます
+        function checkLocation() {
+            if (!navigator.geolocation) {
+                alert("GPSが使えません");
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                document.getElementById('msg').innerText = "座標解析完了。500m以内にクエストを確認...";
+                // ここにランダム座標生成ロジックを追加予定
+            });
+        }
+    </script>
+</body>
+</html>
